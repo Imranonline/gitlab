@@ -16,3 +16,10 @@ test:
     stage: test
     script: 
         - "dotnet test"
+    artifacts:
+    when: always
+    paths:
+      - ./**/*test-result.xml
+    reports:
+      junit:
+        - ./**/*test-result.xml
