@@ -1,5 +1,4 @@
-image: microsoft/dotnet:latest
-
+image: appdynamics/dotnet-core-agent
 
 stages:
     - build
