@@ -1,4 +1,4 @@
-image: appdynamics/dotnet-core-agent
+image: bitnami/dotnet-sdk
 
 stages:
     - build
