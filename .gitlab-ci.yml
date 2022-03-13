@@ -46,4 +46,4 @@ deploy:
     - cd bin
     # zip release, name zip CreativelyCode.zip
     - mkdir prep
-    - zip -r CreativelyCode release
+    - zip -r CreativelyCode
