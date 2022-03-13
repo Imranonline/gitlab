@@ -32,7 +32,7 @@ deploy:
         - dev
     artifacts:
         paths:
-            - bin/release
+        - publish/
         expire_in: 1 week
     script:
     # cd to where csproj is
@@ -46,4 +46,4 @@ deploy:
     - cd bin
     # zip release, name zip CreativelyCode.zip
     - mkdir prep
-    - zip -r CreativelyCode
+    - zip -r CreativelyCode release
