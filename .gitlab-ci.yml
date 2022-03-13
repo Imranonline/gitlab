@@ -38,14 +38,16 @@ deploy:
     # cd to where csproj is
     #- cd $deploy_path
     # publish the files - this will generate the publish files in bin/release 
-    - dotnet publish -c Release -o ./publish dotnetcore.csproj
-    - dotnet msbuild "dotnetcore.csproj" /p:DeployOnBuild=true /p:PublishProfile="zarca - Web Deploy" /p:Username="$zarca" /p:Password="STogrnnaJqtQhJq9auHDvkg4cQswej65vFloNAp8Gn2iNJ5gMF6FGNj9qKJc" /p:publishUrl="zarca.scm.azurewebsites.net:443"
-
+    # - dotnet publish -c Release -o ./publish dotnetcore.csproj
+    # - dotnet msbuild "dotnetcore.csproj" /p:DeployOnBuild=true /p:PublishProfile="zarca - Web Deploy" /p:Username="$zarca" /p:Password="STogrnnaJqtQhJq9auHDvkg4cQswej65vFloNAp8Gn2iNJ5gMF6FGNj9qKJc" /p:publishUrl="zarca.scm.azurewebsites.net:443"
+    - dotnet publish -c release
     # install zip and lftp
     - apt-get update -qq && apt-get install -y -qq zip lftp 
     # cd to bin
     - cd bin
     - ls
     # zip release, name zip CreativelyCode.zip
-    # - mkdir prep
-    - zip -r CreativelyCode Release/
+    - mkdir prep
+    - zip -r CreativelyCode Release
+    - lftp -e "set ssl:verify-certificate no; lpwd; open $FTP_HOST; user $FTP_USERNAME $FTP_PASSWORD; put -O /files/ CreativelyCode.zip; bye"
+
