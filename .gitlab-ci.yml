@@ -39,7 +39,7 @@ deploy:
     #- cd $deploy_path
     # publish the files - this will generate the publish files in bin/release 
     - dotnet publish -c Release -o ./publish dotnetcore.csproj
-    - dotnet msbuild "AzureWebApp.csproj" /p:DeployOnBuild=true /p:PublishProfile="zarca - Web Deploy" /p:Username="$zarca" /p:Password="STogrnnaJqtQhJq9auHDvkg4cQswej65vFloNAp8Gn2iNJ5gMF6FGNj9qKJc" /p:publishUrl="zarca.scm.azurewebsites.net:443"
+    - dotnet msbuild "dotnetcore.csproj" /p:DeployOnBuild=true /p:PublishProfile="zarca - Web Deploy" /p:Username="$zarca" /p:Password="STogrnnaJqtQhJq9auHDvkg4cQswej65vFloNAp8Gn2iNJ5gMF6FGNj9qKJc" /p:publishUrl="zarca.scm.azurewebsites.net:443"
 
     # install zip and lftp
     - apt-get update -qq && apt-get install -y -qq zip lftp 
