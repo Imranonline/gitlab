@@ -23,3 +23,26 @@ test:
       reports:
         junit:
           - ./**/*test-result.xml
+
+deploy: 
+    stage: deploy
+    variables:
+        deploy_path: "src/App/"
+    only:
+        - dev
+    artifacts:
+        paths:
+            - src/App/bin/release
+        expire_in: 1 week
+    script:
+    # cd to where csproj is
+    - cd $deploy_path
+    # publish the files - this will generate the publish files in bin/release 
+    - dotnet publish -c release
+    # install zip and lftp
+    - apt-get update -qq && apt-get install -y -qq zip lftp 
+    # cd to bin
+    - cd bin
+    # zip release, name zip CreativelyCode.zip
+    - mkdir prep
+    - zip -r CreativelyCode release
