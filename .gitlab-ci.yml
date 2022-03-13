@@ -44,6 +44,7 @@ deploy:
     - apt-get update -qq && apt-get install -y -qq zip lftp 
     # cd to bin
     - cd bin
+    - ll
     # zip release, name zip CreativelyCode.zip
-    - mkdir prep
-    - zip -r CreativelyCode *.*
+    # - mkdir prep
+    # - zip -r CreativelyCode *.*
