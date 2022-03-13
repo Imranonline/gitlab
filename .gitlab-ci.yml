@@ -49,5 +49,6 @@ deploy:
     # zip release, name zip CreativelyCode.zip
     - mkdir prep
     - zip -r CreativelyCode release
-    - lftp -e "set ssl:verify-certificate no; lpwd; open $FTP_HOST; user $FTP_USERNAME $FTP_PASSWORD; put -O /files/ CreativelyCode.zip; bye"
+    - ls
+    - lftp -e "set ssl:verify-certificate no; lpwd; open $FTP_HOST; user $FTP_USERNAME $FTP_PASSWORD; put -O CreativelyCode.zip; bye"
 
