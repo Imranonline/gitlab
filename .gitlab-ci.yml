@@ -32,7 +32,7 @@ deploy:
         - dev
     artifacts:
         paths:
-            - src/App/bin/release
+            - bin/release
         expire_in: 1 week
     script:
     # cd to where csproj is
