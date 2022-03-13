@@ -1,5 +1,5 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions 
+# More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy ASP.Net Core app to Azure Web App - zarca
 
@@ -16,11 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup .NET
+      - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 5.0.x
-        
+          dotnet-version: '5.0.x'
+          include-prerelease: true
+
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
@@ -52,5 +53,5 @@ jobs:
         with:
           app-name: 'zarca'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B91DC918A609482397BF08F6FBD62BD5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_64465EA1BDAA4899BAAD803A74E47C46 }}
           package: .
