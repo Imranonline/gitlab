@@ -32,7 +32,7 @@ deploy:
         - dev
     artifacts:
         paths:
-        - publish/
+        - /
         expire_in: 1 week
     script:
     # cd to where csproj is
