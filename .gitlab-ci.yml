@@ -36,7 +36,7 @@ deploy:
         expire_in: 1 week
     script:
     # cd to where csproj is
-    - cd $deploy_path
+    #- cd $deploy_path
     # publish the files - this will generate the publish files in bin/release 
     - dotnet publish -c Release -o ./publish dotnetcore.csproj
 
