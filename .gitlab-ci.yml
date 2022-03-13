@@ -27,8 +27,7 @@ test:
 
 deploy: 
     stage: deploy
-    variables:
-        deploy_path: "src/App/"
+    
     only:
         - dev
     artifacts:
