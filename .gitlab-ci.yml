@@ -3,6 +3,7 @@ image: bitnami/dotnet-sdk
 stages:
     - build
     - test
+    - deploy
 
 build:
     stage: build
@@ -26,23 +27,25 @@ test:
 
 deploy: 
     stage: deploy
-    variables:
-        deploy_path: "src/App/"
+    
     only:
         - dev
     artifacts:
         paths:
-            - src/App/bin/release
+        - publish/
         expire_in: 1 week
     script:
     # cd to where csproj is
-    - cd $deploy_path
+    #- cd $deploy_path
     # publish the files - this will generate the publish files in bin/release 
-    - dotnet publish -c release
+    - dotnet publish -c Release -o ./publish dotnetcore.csproj
+    - dotnet msbuild "dotnetcore.csproj" /p:DeployOnBuild=true /p:PublishProfile="zarca - Web Deploy" /p:Username="$zarca" /p:Password="STogrnnaJqtQhJq9auHDvkg4cQswej65vFloNAp8Gn2iNJ5gMF6FGNj9qKJc" /p:publishUrl="zarca.scm.azurewebsites.net:443"
+
     # install zip and lftp
     - apt-get update -qq && apt-get install -y -qq zip lftp 
     # cd to bin
     - cd bin
+    - ls
     # zip release, name zip CreativelyCode.zip
-    - mkdir prep
-    - zip -r CreativelyCode release
+    # - mkdir prep
+    - zip -r CreativelyCode Release/
