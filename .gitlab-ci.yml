@@ -3,6 +3,7 @@ image: bitnami/dotnet-sdk
 stages:
     - build
     - test
+    - deploy
 
 build:
     stage: build
