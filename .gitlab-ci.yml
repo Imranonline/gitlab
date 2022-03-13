@@ -38,7 +38,8 @@ deploy:
     # cd to where csproj is
     - cd $deploy_path
     # publish the files - this will generate the publish files in bin/release 
-    - dotnet publish -c release
+    - dotnet publish -c Release -o ./publish dotnetcore.csproj
+
     # install zip and lftp
     - apt-get update -qq && apt-get install -y -qq zip lftp 
     # cd to bin
