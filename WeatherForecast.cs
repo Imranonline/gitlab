@@ -1,6 +1,6 @@
 using System;
 
-namespace test_zar
+namespace zarca
 {
     public class WeatherForecast
     {
